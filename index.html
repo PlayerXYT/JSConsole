@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Learn JavaScript</title>
+<style>
+.a {
+ width: 100%;
+ background-color: #e8e8e8;
+ border-radius: 12px;
+}
+</style>
+</head>
+<body>
+<pre style="height:90%;overflow-y:scroll;" class="a" id="o"></pre><br><br>
+<input type="text" class="a" id="i" placeholder="Console input">
+<script type="text/javascript">
+var out = new Object;
+out.log = function(o) {document.getElementById("o").innerHTML += "\n"+o;}
+out.info = function(o) {document.getElementById("o").innerHTML += "\n[Info] "+o;}
+out.warn = function(o) {document.getElementById("o").innerHTML += "\n[Warning] "+o;}
+out.error = function(o) {document.getElementById("o").innerHTML += "\n[Error] "+o;}
+
+document.getElementById("i").addEventListener("keyup", event => {
+ if(event.keyCode==13) {
+  try {
+   eval(document.getElementById("i").value);
+  } catch(e) {
+   out.error(e.message);
+  }
+ }
+})
+</script>
+<script src="main.js"></script>
+</body>
+</html>
